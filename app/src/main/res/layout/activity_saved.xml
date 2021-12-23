@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tesseractapp.demo.viewmodel.SaveViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_margin="@dimen/_12sdp"
+            android:src="@drawable/ic_back"
+            android:onClick="@{()->viewModel.onBack()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.tesseractapp.demo.customVIew.MyTextViewSemiBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saved"
+            android:textColor="#94C77D"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/ivBack"
+            app:layout_constraintTop_toTopOf="@+id/ivBack" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:background="@drawable/ract_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivBack">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:padding="@dimen/_3sdp"
+                android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.tesseractapp.demo.customVIew.MyEditTextSemiBold
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:background="@null"
+                android:hint="@string/search"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:padding="@dimen/_3sdp"
+                android:src="@drawable/ic_setting"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.tesseractapp.demo.customVIew.MyTextViewSemiBold
+            android:id="@+id/tvToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="Today"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <com.tesseractapp.demo.customVIew.MyTextViewRegular
+            android:layout_width="58dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/_18sdp"
+            android:text="See all.."
+            android:onClick="@{()->viewModel.onBack()}"
+            android:textColor="#94C77D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvToday"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvToday">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_12sdp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSaved"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:src="@drawable/ic_layer_51"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rvSaved" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemViewModel"
+            type="com.tesseractapp.demo.viewmodel.NewsItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_36sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/ract_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivNews"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:loadImg="@{itemViewModel.image}" />
+
+        <ImageView
+            android:onClick="@{()->itemViewModel.onSave()}"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:src="@drawable/no_save"
+            app:loadDrawable="@{itemViewModel.loadDrawable}"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="@+id/ivNews"
+            app:layout_constraintTop_toTopOf="@+id/ivNews" />
+
+        <com.tesseractapp.demo.customVIew.MyTextViewBold
+            android:id="@+id/tvHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="8sp"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            android:text="@{itemViewModel.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivNews" />
+
+        <com.tesseractapp.demo.customVIew.MyTextViewRegular
+            android:id="@+id/tvNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:maxLines="3"
+            android:text="@{itemViewModel.news}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeading" />
+
+        <com.tesseractapp.demo.customVIew.MyTextViewRegular
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:text="@{itemViewModel.date}"
+            android:textColor="@color/text"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNews" />
+
+        <com.tesseractapp.demo.customVIew.MyTextViewSemiBold
+            android:id="@+id/tvRead"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/ract_green"
+            android:gravity="center"
+            android:text="@string/read"
+            android:onClick="@{()->itemViewModel.onRead()}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+        <com.tesseractapp.demo.customVIew.MyTextViewSemiBold
+            android:id="@+id/tvSave"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:onClick="@{()->itemViewModel.onSave()}"
+            android:background="@drawable/ract_green"
+            android:gravity="center"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

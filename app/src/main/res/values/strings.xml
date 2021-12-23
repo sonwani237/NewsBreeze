@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NEWS APP</string>
+
+    <string name="network_error">Oops! Slow internet connection.</string>
+    <string name="search">Search</string>
+    <string name="save">Save</string>
+    <string name="read">Read</string>
+</resources>
